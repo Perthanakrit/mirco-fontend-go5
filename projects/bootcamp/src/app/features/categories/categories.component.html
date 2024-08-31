@@ -1,0 +1,36 @@
+<div class="container">
+    <h1 class="mt-3">
+        Categories
+    </h1>
+    <div class="d-flex justify-content-end">
+        <a [routerLink]="['/categories/add']" class="btn btn-primary">Add Category</a>
+    </div>
+
+    @if(categories.length) {
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Url Handle</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (category of categories; track category.id) {
+                    <tr>
+                        <td>{{ category.id }}</td>
+                        <td>{{ category.name }}</td>
+                        <td>{{ category.urlHandle }}</td>
+                        <td>
+                            <div class="d-flex justify-content-evenly">
+                                <div class="btn btn-primary">Edit</div>
+                                <div class="btn btn-danger" (click)="deleteCategory(category.id)">Delete</div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
